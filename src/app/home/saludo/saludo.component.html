@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">Saludo</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <!-- <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" [value]="name" (input)="name"> -->
+      <!-- <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" [ngModel]="name" [ngModelChange]="name"> -->
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" [(ngModel)]="name">
+    </div>
+    <button (click)="onBorrar($event)" type="button" class="btn btn-primary">Borrar</button>
+  </div>
+  <div class="card-footer text-muted">
+    Hola {{ name }}
+  </div>
+</div>

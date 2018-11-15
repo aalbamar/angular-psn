@@ -1,0 +1,7 @@
+<input type="checkbox" name="isCompleted" id="isCompleted" [(ngModel)]="tarea.isCompleted" (change)="sendChange()">
+<!--Con directiva de atributo-->
+<!-- <span [class.completed]="tarea.isCompleted">{{ tarea.nombre }}</span> -->
+<!--Con directiva estructural-->
+<span [ngClass]="{completed : tarea.isCompleted}">{{ tarea.nombre }}</span>
+<!-- Trash from emojipedia-->
+<span class="trash" (click)='sendBorrar()'>🗑️</span>

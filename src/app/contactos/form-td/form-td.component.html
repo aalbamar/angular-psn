@@ -1,0 +1,64 @@
+<h4>Formulario TemplateDriven</h4>
+<!-- cForm va a ser una referencia local al elemento form -->
+<form name="contactoForm" #cForm="ngForm" (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <!-- nombre va a ser una referencia local al elemento input nombre -->
+      <input type="text" class="form-control" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="contacto.nombre" required minlength="2">
+      <!-- <small id="helpId" class="form-text text-muted"></small> -->
+      <div class="error" [hidden]="nombre.untouched || nombre.valid">
+        <!-- ? es el operador elvis -->
+        <p [hidden]="!nombre.errors?.required"><small id="helpId" class="form-text text-muted">El campo nombre es obligatorio</small></p>
+        <p [hidden]="!nombre.errors?.minlength"><small id="helpId" class="form-text text-muted">El nombre debe de tener al menos 3 caracteres</small></p>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="contacto.apellidos" required="true">
+        <small id="helpId" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="email">Correo</label>
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="contacto.email" required="true">
+      <small id="emailHelpId" class="form-text text-muted"></small>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" id="isOk" name="isOk" [(ngModel)]="contacto.isOk">
+        Estás de acuerdo con ....
+      </label>
+    </div>
+    <fieldset >
+      <legend>Datos del curso</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" id="tm" name="turno" value="Mañana" [(ngModel)]="contacto.turno">
+          Mañana
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" id="tt" name="turno" value="Tarde" [(ngModel)]="contacto.turno">
+          Tarde
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" id="tn" name="turno" value="Noche" [(ngModel)]="contacto.turno">
+          Noche
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="curso">Selecciona el tema</label>
+        <select class="form-control" id="curso" name="curso" [(ngModel)]="contacto.curso">
+          <option *ngFor="let curso of aCursos" [ngValue]="curso">{{ curso.nombre }}</option>
+        </select>
+      </div>
+    </fieldset>
+    <!-- <button type="button" class="btn btn-primary" value="Enviar"></button> -->
+    <!-- Habilitamos el botón cuando todas las validacione de campo se han cumplido -->
+    <button type="submit" class="btn btn-primary" [disabled]="cForm.invalid">Enviar</button>
+  </form>
+  <div>
+    {{ contacto | json }}
+  </div>

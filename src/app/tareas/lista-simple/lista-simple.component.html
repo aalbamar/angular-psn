@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label for="">Nueva tarea</label>
+  <input type="text" class="form-control" name="tarea" id="tarea" [(ngModel)]="tarea.nombre">
+</div>
+<button type="button" class="btn btn-primary" (click)="addTarea()">Añadir</button>
+<div class="top5" *ngIf="aTareas.length">
+    <h4>Lista de tareas</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of aTareas; let i = index">
+        <input type="checkbox" name="isCompleted" id="isCompleted" [(ngModel)]="item.isCompleted">
+        <!--Con directiva de atributo-->
+        <!-- <span [class.completed]="item.isCompleted">{{ item.nombre }}</span> -->
+        <!--Con directiva estructural-->
+        <span ngClass="{completed : item.isCompleted}">{{ item.nombre }}</span>
+        <!-- Trash from emojipedia-->
+        <span class="trash" (click)='onBorrar(i)'>🗑️</span>
+      </li>
+    </ul>
+    <!-- <p>{{ aTareas | json }}</p> -->
+</div>

@@ -1,0 +1,11 @@
+<p>
+  footer works!
+</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 text-center">
+      <address>{{ autor }} - {{ empresa }}</address>
+      <p>{{ lugar }} - {{ fecha | date : 'fullDate' : '' : 'es' | titlecase }}</p>
+    </div>
+  </div>
+</div>

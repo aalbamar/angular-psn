@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">SaludoLocal</h4>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <!-- Referencias locales: creamos un elemento en el DOM llamado locName que luego asociaremos en el ts a la variable name -->
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" [(ngModel)]="locName.value" #locName>
+    </div>
+    <button (click)="locName.value = ''" type="button" class="btn btn-primary">Borrar</button>
+  </div>
+  <div class="card-footer text-muted">
+    Hola {{ locName.value }}
+  </div>
+</div>
