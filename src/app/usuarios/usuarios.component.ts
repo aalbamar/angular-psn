@@ -77,6 +77,28 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
+  onMostrarObs() {
+    this.aUsuarios = [];
+    if( this.idUser ) {
+      this.usuariosSrv.getUserObs(this.idUser).subscribe(
+        (resp) => { console.dir(resp.headers);
+                    console.dir(resp.headers.keys);
+                    console.log(resp.headers.keys);
+                    console.dir(resp.body);
+                    this.aUsuarios.push(resp.body); },
+        undefined,
+        () => {console.log('Request completed')}
+      );
+    } else {
+      this.usuariosSrv.getUsersObs().subscribe(
+        (resp: any) => { console.dir(resp.headers);
+                         console.dir(resp.headers.keys);
+                         console.dir(resp.body);
+                         this.aUsuarios = resp.body; }
+      );
+    }
+  }
+
   onAdd() {
     this.usuariosSrv.postUser(this.user).then(
       (data) => {

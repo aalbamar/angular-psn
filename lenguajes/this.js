@@ -24,3 +24,10 @@ let o6 = {
 }
 
 setTimeout(o6.saludar.bind(o6), 1000)
+
+
+let o2 =  {
+    nombre : 'Andres'
+}
+o.saludar.bind(o2)()
+console.dir(o2)

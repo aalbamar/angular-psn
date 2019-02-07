@@ -18,8 +18,17 @@ export class UsuariosService {
     return this.http.get(url).toPromise();
   }
 
+  getUserObs(id) {
+    const url = `${this.url}/${id}`;
+    return this.http.get(url, { observe: 'response' });
+  }
+
   getUsers() {
     return this.http.get(this.url).toPromise();
+  }
+
+  getUsersObs() {
+    return this.http.get(this.url, { observe: 'response' });
   }
 
   postUser(user) {
