@@ -5,7 +5,7 @@ class Persona {
     }
 
     saludar () {
-        console.log(`Hola soy   ${this.nombre}`)
+        console.log(`Hola soy    ${this.nombre}`)
     }
 }
 
